@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -113,18 +114,19 @@ public class Main {
 	}
 	
 	
-	/*public double CalInterest(Account a) {
-	 * if(a.
-		for(int i=0;i<6;i++) {
-		if(a.getOpenDate().getDayOfMonth()>=10) {
-			
-			
-		}
-		else {
-			
-		}
+	public double CalInterest(Account a) {
+	 Period p=Period.between(LocalDate.now(),a.getOpenDate());
+	 int months=(int) p.toTotalMonths();
+	 if(a.accType == "sb" && a.getOpenDate().getDayOfMonth()>=10 && LocalDate.now().getMonthValue()==a.getOpenDate().getMonthValue()){
+			return 0;		
 	}
-	}*/
+     
+     else if(a.accType == "sb" && months<6 && a.getOpenDate().getDayOfMonth()>=10) {
+    	 for(int i=0;i<months-1;i++) {
+    		 
+    	 }
+     }
+	}
 	
 	
 	public double getMinBalance(Account a,int month,int year) {
