@@ -92,7 +92,7 @@ public class Main {
 
 		for (Transaction t : al) {
 
-			if (t.getTdate().compareTo(givendate) <= 0) {
+			if (t.getTdate().compareTo(givendate) >= 0) {
 				if (t.getTtype().equals("W")) {
 					amt = amt + t.getTamount();
 
@@ -102,6 +102,7 @@ public class Main {
 			}
 
 		}
+
 		return amt;
 
 	}
@@ -114,7 +115,7 @@ public class Main {
 
 			int currentMonth = t1.getTdate().getMonthValue();
 			if (month == currentMonth && t1.getTdate().getYear() == year && t1.getTdate().getDayOfMonth() >= 10) {
-				double min2 = getBalanceAsOnDate(a,LocalDate.now(), at);
+				double min2 = getBalanceAsOnDate(a, t1.getTdate(), at);
 				min1 = Math.min(min1, min2);
 
 			}
